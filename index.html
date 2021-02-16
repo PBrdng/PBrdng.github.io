@@ -85,22 +85,24 @@
           padding: 20px;
         }
         table {
-          border-collapse: collapse;
           width: 100%;
           font-size: 20px;
           font-family: 'Roboto', sans-serif;
           color: #020202;
           font-weight: 400;
-        }
-
-        td, th {
           border: solid 0.1px rgba(62, 97, 120, 0.2);
+        }
+        table.center {
+            margin-left: auto;
+            margin-right: auto;
+          }
+        td, th {
           text-align: left;
           padding: 40px 40px 40px 40px;
         }
 
         tr:nth-child(odd) {
-          background-color: rgba(62, 97, 120, 0.075);
+          background-color: rgba(62, 97, 120, 0.06);
         }
     </style>
 </head>
@@ -162,10 +164,7 @@ My research is in nonlinear algebra.
 <p><hr>
 
 
-<div class="row">
-<div class="column left">
-
-    <table>
+<table rules = "rows">
       <tr><td>
 <h3>Workshop on Software and Applications of Numerical Nonlinear Algebra</h3>
 <a href = "https://sites.google.com/view/taylorbrysiewicz/home">Taylor Brysiewicz</a>, <a href = "https://simontelen.webnode.com">Simon Telen</a>, <a href = "https://sascha.timme.xyz">Sascha Timme</a> and I are organizing a
@@ -174,31 +173,17 @@ My research is in nonlinear algebra.
 
 If you want to learn how to solve systems of polynomial equations efficiently, you should <a href="https://www.mis.mpg.de/cgi-bin/registration.pl?id=310">register</a>.
       </td>
+      <td rowspan="2">
+    &nbsp;&nbsp;&nbsp;&nbsp;<video class = "video-background" src=conics.mp4 height="300" autoplay loop muted playsinline>
+    </td>
       </tr>
       <tr><td>
 <h3>Numerical and probabilistic nonlinear algebra</h3>
 
 My application for an <a href="https://www.dfg.de/en/research_funding/programmes/individual/emmy_noether/index.html">Emmy Noether Research Group</a> was approved by the Deutsche Forschungsgemeinschaft. <p>
 The title of the project is <a href="https://gepris.dfg.de/gepris/projekt/445466444">Numerical and probabilistic nonlinear algebra</a>.
-</th></td>
-  </table>
-
-
-
-
-
-
-
-
-</div>
-
-<div class="column right">
-    &nbsp;&nbsp;&nbsp;&nbsp;<video class = "video-background" src=conics.mp4 height="300" autoplay loop muted playsinline>
-
-</div>
-</div>
-
-<table>
+</td>
+</tr>
 <tr><td>
 
 
@@ -211,7 +196,8 @@ The title of the project is <a href="https://gepris.dfg.de/gepris/projekt/445466
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ACkXvk-LDXY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-</td></tr>
+</td><td></td>
+</tr>
 <tr><td>
 
 
@@ -223,19 +209,22 @@ The current version of our software HomotopyContinuation.jl is v.2.4.2
 
 
 
-</td></tr>
+</td><td></td>
+</tr>
 <tr><td>
 
 
 <h3>An Algebraic Geometry Perspective on Topological Data Analysis</h3>
 I wrote a short <a href="https://sinews.siam.org/Details-Page/an-algebraic-geometry-perspective-on-topological-data-analysis">survey</a> for the <a href="https://sinews.siam.org/Portals/Sinews2/Issue%20Pdfs/sn_January-February2020.pdf">January/February 2020 issue of SIAM News</a>.
 
-</td></tr>
+</td><td></td>
+</tr>
 <tr><td>
 <h3>A brief history of mathematics</h3>
 I recommend the podcast
 <a href="http://www.bbc.co.uk/programmes/b00srz5b/episodes/downloads">"A brief history of mathematics"</a> by Prof. Marcus du Sautoy for BBC Radio.
-</td></tr>
+</td><td></td>
+</tr>
 </table>
 <div>
 </body>
