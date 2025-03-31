@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Jump & Run</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Verhindert, dass scrollbars erscheinen */
+            background-color: #87CEEB; /* Himmel Hintergrundfarbe */
+        }
+        canvas { 
+            display: block; 
+            background-color: lightblue; /* Hintergrundfarbe des Spiels */ 
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = 800;  // Breite des Canvas 
+        canvas.height = 400; // Höhe des Canvas
+        let gameRunning = false;
+        let keys = {};
+        let cameraX = 0;
+        let score = 0;
+
+        // Wolkenpositionen
+        let clouds = [
+            { x: 200, y: 80, speed: 0.5 },
+            { x: 400, y: 50, speed: 1 }
+        ];
+
+        class Player {
+            constructor() {
+                this.x = 100;
+                this.y = 250; // Starte in einer Höhe, wo die Spielerfigur sicher stehen kann
+                this.width = 40;
+                this.height = 40;
+                this.dy = 0;
+                this.gravity = 0.5;
+                this.jumpPower = -12;
+                this.jumps = 0;
+                this.maxJumps = 2;
+                this.grounded = false;
+                this.speed = 7;
+            }
+
+            jump() {
+                if (this.jumps < this.maxJumps) {
+                    this.dy = this.jumpPower;
+                    this.jumps++;
+                    this.grounded = false;
+                }
+            }
+
+            update() {
+                this.dy += this.gravity;
+                this.y += this.dy;
+                this.grounded = false;
+
+                // Überprüfe Kollisionen mit Plattformen
+                for (let platform of platforms) {
+                    if (this.y + this.height > platform.y && this.y + this.height - this.dy <= platform.y &&
+                        this.x + this.width > platform.x && this.x < platform.x + platform.width) {
+                        this.y = platform.y - this.height;
+                        this.dy = 0;
+                        this.jumps = 0; // Setze Sprünge zurück, wenn der Spieler auf einer Plattform landet
+                        this.grounded = true;
+                    }
+                }
+
+                // Bodenbedingungen
+                if (this.y > 300) {
+                    this.y = 300; // Spieler auf dem Boden festlegen
+                    this.dy = 0;
+                    this.jumps = 0;
+                    this.grounded = true;
+                }
+
+                // Bewegung
+                if (keys["ArrowLeft"] || keys["KeyA"]) {
+                    this.x -= this.speed;
+                }
+                if (keys["ArrowRight"] || keys["KeyD"]) {
+                    this.x += this.speed;
+                    if (this.x > cameraX + 400) {
+                        cameraX += this.speed;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = "black"; // Spielerfarbe
+                ctx.font = "30px serif";
+                ctx.fillText("∫", this.x - cameraX, this.y + this.height); // Symbol für den Spieler
+            }
+        }
+
+        class Enemy {
+            constructor(x, func, integral, height) {
+                this.x = x;
+                this.y = height || 250;
+                this.width = 50;
+                this.height = 40;
+                this.func = func;
+                this.integral = integral;
+                this.active = true;
+                this.moveDirection = Math.random() < 0.5 ? 1 : -1; // Zufällige Richtung
+                this.speed = 1; // Bewegungsgeschwindigkeit
+            }
+
+            update() {
+                this.x -= 1.5;
+                this.y += this.moveDirection * this.speed;
+
+                // Vertikale Bewegung der Gegner
+                if (this.y <= 100 || this.y >= 350) {
+                    this.moveDirection *= -1; // Richtung wechseln
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = this.active ? "red" : "green";
+                ctx.font = "20px serif";
+
+                let displayFunc;
+                switch (this.func) {
+                    case "sin(x)":
+                        displayFunc = "sin(x)";
+                        break;
+                    case "cos(x)":
+                        displayFunc = "cos(x)";
+                        break;
+                    case "x^2":
+                        displayFunc = "x\u00B2";
+                        break;
+                    case "ln(x)":
+                        displayFunc = "ln(x)";
+                        break;
+                    case "1/x":
+                        displayFunc = "1/x";
+                        break;
+                    case "e^x":
+                        displayFunc = "exp(x)";
+                        break;
+                    case "tan(x)":
+                        displayFunc = "tan(x)";
+                        break;
+                    case "1/x^2":
+                        displayFunc = "1/x\u00B2";
+                        break;
+                    case "sqrt(x)":
+                        displayFunc = "√x";
+                        break;
+                    case "x":
+                        displayFunc = "x";
+                        break;
+                    default:
+                        displayFunc = this.func;
+                }
+
+                ctx.fillText(this.active ? displayFunc : this.integral, this.x - cameraX, this.y);
+            }
+
+            changeToIntegral() {
+                this.active = false;
+            }
+        }
+
+        class Platform {
+            constructor(x, y, width, height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            }
+
+            draw() {
+                ctx.fillStyle = "#8B4513"; // Braune Farbe für Plattformen
+                ctx.fillRect(this.x - cameraX, this.y, this.width, this.height);
+                ctx.strokeStyle = "#654321"; // Dunklere Farbe für die Linien
+                ctx.lineWidth = 2;
+                ctx.strokeRect(this.x - cameraX, this.y, this.width, this.height); // Rahmen hinzufügen
+
+                for (let i = 0; i < this.width; i += 10) {
+                    ctx.beginPath();
+                    ctx.moveTo(this.x - cameraX + i, this.y);
+                    ctx.lineTo(this.x - cameraX + i, this.y + this.height);
+                    ctx.strokeStyle = "#A0522D"; // Holzfarbe
+                    ctx.stroke();
+                }
+            }
+        }
+
+        let player = new Player();
+        let enemies = [];
+        let platforms = [new Platform(300, 250, 100, 10), new Platform(500, 200, 100, 10)];
+
+        function drawSky() {
+            ctx.fillStyle = "#87CEEB"; // Himmel Farbe
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const sunX = 100;
+            const sunY = 100;
+            ctx.fillStyle = "yellow"; // Sonne
+            ctx.beginPath();
+            ctx.arc(sunX, sunY, 40, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = "white"; // Wolken
+            clouds.forEach(cloud => {
+                ctx.beginPath();
+                ctx.arc(cloud.x, cloud.y, 30, 0, Math.PI * 2);
+                ctx.arc(cloud.x + 30, cloud.y, 30, 0, Math.PI * 2);
+                ctx.arc(cloud.x + 15, cloud.y - 10, 30, 0, Math.PI * 2);
+                ctx.fill();
+
+                cloud.x -= cloud.speed;
+                if (cloud.x < -100) { 
+                    cloud.x = canvas.width + Math.random() * 200;
+                }
+            });
+        }
+
+        function drawGround() {
+            ctx.fillStyle = "#228B22"; // Grasfarbe
+            ctx.fillRect(0, 350, canvas.width, 50); // Boden zeichnen
+        }
+
+        function generateNewObjects() {
+            let newX = cameraX + 800 + Math.random() * 200;
+
+            // Plattformen zufällig erstellen
+            if (Math.random() < 0.025) {
+                let newY = 50 + Math.random() * 200; 
+                let newPlatform = new Platform(newX, newY, 100, 10);
+
+                if (!isPlatformOverlapping(newPlatform)) {
+                    platforms.push(newPlatform);
+                }
+            }
+
+            // Gegner zufällig generieren
+            if (Math.random() < 0.03) {
+                let enemyChoices = [
+                    { func: "sin(x)", integral: "-cos(x)" },
+                    { func: "cos(x)", integral: "sin(x)" },
+                    { func: "x^2", integral: "1/3 x³" },
+                    { func: "ln(x)", integral: "x ln(x) - x" },
+                    { func: "1/x", integral: "ln|x|" },
+                    { func: "e^x", integral: "exp(x)"},
+                    { func: "tan(x)", integral: "-ln|cos(x)|" },
+                    { func: "1/x^2", integral: "-1/x" },
+                    { func: "sqrt(x)", integral: "2/3 x^(3/2)" },
+                    { func: "x", integral: "1/2 x^2" }
+                ];
+
+                let randomChoice = enemyChoices[Math.floor(Math.random() * enemyChoices.length)];
+                let newEnemy = new Enemy(newX + 100, randomChoice.func, randomChoice.integral, Math.random() * 300);
+
+                if (!isEnemyOverlapping(newEnemy)) {
+                    enemies.push(newEnemy);
+                }
+            }
+        }
+
+        function isPlatformOverlapping(newPlatform) {
+            for (let platform of platforms) {
+                if (
+                    newPlatform.x - 30 < platform.x + platform.width &&
+                    newPlatform.x + newPlatform.width + 30 > platform.x &&
+                    newPlatform.y - 30 < platform.y + platform.height &&
+                    newPlatform.y + newPlatform.height + 30 > platform.y
+                ) {
+                    return true; // Kollision
+                }
+            }
+            return false; // Keine Kollision
+        }
+
+        function isEnemyOverlapping(newEnemy) {
+            for (let enemy of enemies) {
+                if (
+                    newEnemy.x < enemy.x + enemy.width &&
+                    newEnemy.x + newEnemy.width > enemy.x &&
+                    newEnemy.y < enemy.y + enemy.height &&
+                    newEnemy.y + newEnemy.height > enemy.y
+                ) {
+                    return true; // Kollision
+                }
+            }
+            return false; // Keine Kollision
+        }
+
+        function updateGame() {
+            if (!gameRunning) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawSky();
+            drawGround(); // Boden zeichnen
+            platforms.forEach(platform => platform.draw());
+            player.update();
+            player.draw();
+            generateNewObjects();
+            enemies.forEach(enemy => {
+                enemy.update();
+                enemy.draw();
+                if (enemy.active && player.y + player.height < enemy.y && player.y + player.height + player.dy >= enemy.y &&
+                    player.x < enemy.x + enemy.width && player.x + player.width > enemy.x) {
+                    enemy.changeToIntegral(); // Gegner zur Integral wechseln
+                    score += 10; // Punkte für besiegte Gegner
+                }
+            });
+
+            ctx.fillStyle = "black";
+            ctx.font = "20px serif";
+            ctx.fillText("Score: " + score, 10, 30); // Punktestand anzeigen
+
+            requestAnimationFrame(updateGame);
+        }
+
+        document.addEventListener("keydown", (event) => {
+            keys[event.code] = true;
+            if (event.code === "Space" || event.code === "ArrowUp" || event.code === "KeyW") {
+                player.jump();
+            }
+        });
+
+        document.addEventListener("keyup", (event) => {
+            keys[event.code] = false;
+        });
+
+        // Spiel starten, wenn die Seite geladen wird
+        window.addEventListener('load', () => {
+            gameRunning = true; // Spiel aktivieren
+            updateGame(); // Spiel aktualisieren
+        });
+    </script>
+</body>
+</html>
