@@ -48,24 +48,11 @@
         nav ul li a:hover {
             color: #E74C3C; /* Coral Red on Hover */
         }
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: rgba(62, 97, 120, 0.9); 
-            left: 0;
-            bottom: -5px; /* Space between link and underline */
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        nav ul li a:hover::after {
-            transform: scaleX(1); /* Animate underline on hover */
-        }
         .container {
             margin-top: 80px; /* Space for fixed header */
             padding: 20px;
-            max-width: 1250px;
+            max-width: 1350px; /* Maximum width set to 1350px */
+            width: 100%; /* Make sure it takes full width until max */
             margin-left: auto;
             margin-right: auto;
             background: #fff; /* White Background for Content */
@@ -88,17 +75,16 @@
         .imgR, .imgL {
             border-radius: 8px;
             margin-bottom: 20px;
+            max-width: 100%; /* Make sure images are responsive */
+            height: auto; /* Maintain aspect ratio */
         }
         .imgR {
             float: right;
-            max-width: 100%;
             padding-top: 20px; /* Optional: extra space from top */
         }
         .imgL {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 100%;
+            float: left;
+            padding-top: 20px; /* Optional: extra space from top */
         }
         table {
             width: 100%;
@@ -134,7 +120,6 @@
         .social-icons a:hover {
             color: #E74C3C; /* Coral Red on Icon Hover */
         }
-        /* Updated Link Styles */
         a {
             position: relative;
             color: #34495E; /* Dark Slate Gray for text links */
@@ -146,7 +131,6 @@
             color: #E74C3C; /* Coral Red on Hover */
             text-decoration: underline; /* Underline effect on hover */
         }
-        /* New style for the logo link */
         .logo-link {
             display: inline-block;
             padding: 5px; /* Add slight padding around logo link */
@@ -154,6 +138,35 @@
         .logo-link:hover {
             background-color: rgba(62, 97, 120, 0.1); /* Background highlight on hover */
             border-radius: 4px; /* Smooth rounded corners */
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            h2 {
+                font-size: 24px; /* Smaller h2 for mobile */
+            }
+            h3 {
+                font-size: 20px; /* Smaller h3 for mobile */
+            }
+            nav ul li {
+                display: block; /* Stack navigation items */
+            }
+            .imgR, .imgL {
+                max-width: 90%; /* Allow images to be smaller on mobile */
+                margin: 0 auto; /* Center images */
+                float: none; /* Reset float */
+                padding-top: 20px; /* Optional: extra space from top */
+            }
+            .container {
+                padding: 10px; /* Reduce padding on mobile */
+            }
+            .social-icons a {
+                font-size: 30px; /* Smaller icons for mobile */
+            }
+            iframe {
+                width: 100%; /* Full width for mobile iframes */
+                height: auto; /* Maintain aspect ratio */
+            }
         }
     </style>
 </head>
@@ -163,7 +176,6 @@
 <header>
     <nav>
         <ul>
-          <li><a href="index.html">Main Page</a></li>
             <li><a href="group.html">Group</a></li>
             <li><a href="research.html">Research</a></li>
             <li>
@@ -172,7 +184,7 @@
                 </a>
             </li>
             <li><a href="cv.pdf">Curriculum Vitae</a></li>
-            
+            <li><a href="teaching.html">Lecture Notes</a></li>
         </ul>
     </nav>
 </header>

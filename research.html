@@ -16,6 +16,7 @@
             padding: 0;
             background-color: #ECF0F1; /* Off-White / Light Gray */
         }
+
         header {
             background: #333; /* Dark Header */
             color: #fff;
@@ -25,6 +26,7 @@
             width: 100%;
             z-index: 1000;
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
@@ -32,9 +34,11 @@
             overflow: hidden;
             text-align: center;
         }
+
         nav ul li {
             display: inline;
         }
+
         nav ul li a {
             position: relative;
             display: inline-block;
@@ -44,74 +48,73 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         nav ul li a:hover {
             color: #E74C3C; /* Coral Red on Hover */
         }
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: rgba(62, 97, 120, 0.9); 
-            left: 0;
-            bottom: -5px; /* Space between link and underline */
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        nav ul li a:hover::after {
-            transform: scaleX(1); /* Animate underline on hover */
-        }
+
         .container {
             margin-top: 80px; /* Space for fixed header */
             padding: 20px;
-            max-width: 1250px;
+            max-width: 1350px; /* Maximum width set to 1350px */
+            width: 100%; /* Make sure it takes full width until max */
             margin-left: auto;
             margin-right: auto;
             background: #fff; /* White Background for Content */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
+
         h2 {
             font-size: 32px;
             margin: 10px 0;
             color: #0076A8; /* Darker Cool Blue */
         }
+
         h3 {
             font-size: 24px;
             margin-top: 20px;
             color: #0076A8; /* Darker Cool Blue */
         }
+
         p {
             margin: 10px 0;
         }
+
         .imgR, .imgL {
             border-radius: 8px;
             margin-bottom: 20px;
+            max-width: 100%; /* Make sure images are responsive */
+            height: auto; /* Maintain aspect ratio */
         }
+
         .imgR {
             float: right;
-            max-width: 100%;
             padding-top: 20px; /* Optional: extra space from top */
         }
+
         .imgL {
             display: block;
             margin-left: auto;
             margin-right: auto;
-            max-width: 100%;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
+
         th, td {
             text-align: left;
             padding: 20px;
             border: 1px solid rgba(62, 97, 120, 0.1);
         }
+
         tr:nth-child(odd) {
             background-color: rgba(62, 97, 120, 0.06); /* Row Striping */
         }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -119,10 +122,12 @@
             color: #fff; /* White Text */
             margin-top: 20px;
         }
+
         .social-icons {
             text-align: center;
             margin: 20px 0;
         }
+
         .social-icons a {
             margin: 0 15px; 
             color: #0076A8; /* Darker Cool Blue */
@@ -130,10 +135,11 @@
             padding: 10px; /* Larger clickable area */
             transition: color 0.3s ease;
         }
+
         .social-icons a:hover {
             color: #E74C3C; /* Coral Red on Icon Hover */
         }
-        /* Updated Link Styles */
+
         a {
             position: relative;
             color: #34495E; /* Dark Slate Gray for text links */
@@ -141,18 +147,62 @@
             text-decoration: none; /* Remove default underline */
             transition: color 0.3s ease; /* Smooth color transition */
         }
+
         a:hover {
             color: #E74C3C; /* Coral Red on Hover */
             text-decoration: underline; /* Underline effect on hover */
         }
-        /* New style for the logo link */
+
         .logo-link {
             display: inline-block;
             padding: 5px; /* Add slight padding around logo link */
         }
+
         .logo-link:hover {
             background-color: rgba(62, 97, 120, 0.1); /* Background highlight on hover */
             border-radius: 4px; /* Smooth rounded corners */
+        }
+
+        /* Video styles */
+        .video-container {
+            display: flex;
+            justify-content: center; /* Center video */
+            margin: 20px auto; /* Center top/bottom margin */
+        }
+
+        video {
+            width: 90%; /* Set width to 90% of the container */
+            max-width: 300px; /* Limit maximum width */
+            height: auto; /* Maintain aspect ratio */
+        }
+        
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            h2 {
+                font-size: 24px; /* Smaller h2 for mobile */
+            }
+            h3 {
+                font-size: 20px; /* Smaller h3 for mobile */
+            }
+            nav ul li {
+                display: block; /* Stack navigation items */
+            }
+            .imgR, .imgL {
+                max-width: 90%; /* Allow images to be smaller on mobile */
+                margin: 0 auto; /* Center images */
+                float: none; /* Reset float */
+                padding-top: 20px; /* Optional: extra space from top */
+            }
+            .container {
+                padding: 10px; /* Reduce padding on mobile */
+            }
+            .social-icons a {
+                font-size: 30px; /* Smaller icons for mobile */
+            }
+            iframe {
+                width: 100%; /* Full width for mobile iframes */
+                height: auto; /* Maintain aspect ratio */
+            }
         }
     </style>
 </head>
@@ -177,305 +227,248 @@
 
 <div class="container">
 
-<p>
-<div class="row">
-
-    <video class="imgL" src="conics.mp4" height="300" autoplay loop muted playsinline></video>
-</div>
-
-<p>
-
-<p>
-<hr>
-
-<table rules = "rows">
-<tr>
-<td>
-    <h3>Expository articles</h3>
-
-
-
-    <a href="https://arxiv.org/abs/2103.16300">Nonlinear Algebra and Applications</a><br>
-    with T. Celik, T. Duff, A. Heaton, A. Maraj, A. Sattelberger, L. Venturello, and O. Yürük. Numerical Algebra, Optimization and Control (2021).
+    <div class="row video-container">
+        <video src="conics.mp4" autoplay loop muted playsinline></video>
+    </div>
 
     <p>
+    <hr>
 
+    <table rules="rows">
+        <tr>
+            <td>
+                <h3>Expository articles</h3>
 
-    <a href="https://sinews.siam.org/Details-Page/an-algebraic-geometry-perspective-on-topological-data-analysis">An Algebraic Geometry Perspective on Topological Data Analysis</a><br>
-    SIAM News 53(1) (2020).
+                <a href="https://arxiv.org/abs/2103.16300">Nonlinear Algebra and Applications</a><br>
+                with T. Celik, T. Duff, A. Heaton, A. Maraj, A. Sattelberger, L. Venturello, and O. Yürük. Numerical Algebra, Optimization and Control (2021).
+                <p>
 
+                <a href="https://sinews.siam.org/Details-Page/an-algebraic-geometry-perspective-on-topological-data-analysis">An Algebraic Geometry Perspective on Topological Data Analysis</a><br>
+                SIAM News 53(1) (2020).
+                <p>
+
+                <a href="https://arxiv.org/abs/2302.08585">Numerical Nonlinear Algebra</a><br>
+                with D. Bates, T. Chen, J. Hauenstein, A. Leykin, and F. Sottile. arXiv:2302.08585.
+                <p>
+
+                <a href="https://www.ams.org/journals/notices/202001/rnoti-p30.pdf">3264 Conics in a Second</a><br>
+                with B. Sturmfels and S. Timme. Not. Amer. Math. Soc. 67 (2020), 30-37.
+                <br>
+                <br>
+                <iframe height="200" src="https://www.youtube.com/embed/TZ4_B7qzq7w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>
+            </td>
+            <td>
+                <h3>Mathematics of Data</h3>
+
+                <a href="https://arxiv.org/abs/2203.01694">Line Multiview Varieties</a><br>
+                with F. Rydell, E. Shehu, and A. Torres. SIAM J. Appl. Algebra Geometry (2023).
+                <p>
+
+                <a href="https://arxiv.org/abs/2303.02066">Line Multiview Ideals</a><br>
+                with T. Duff, L. Gustafsson, F. Rydell, and E. Shehu. Communications in Algebra (2024).
+                <p>
+
+                <a href="https://link.springer.com/article/10.1007/s13163-018-0273-6">Learning Algebraic Varieties from Samples</a><br>
+                with B. Sturmfels, S. Kališnik Verovšek, and M. Weinstein. Rev. Mat. Compl. 31 (2018), 545-593.
+                <p>
+
+                <a href="https://arxiv.org/abs/1810.06271">Random points on an algebraic manifold</a><br>
+                with O. Marigliano. SIAM J. Mathematics of Data Science 2(2) (2020), 683-704.
+                <p>
+
+                <a href="https://arxiv.org/abs/2108.13208">Algebraic Compressed Sensing</a><br>
+                with F. Gesmundo, M. Michalek, and N. Vannieuwenhoven. Applied and Computational Harmonic Analysis (2023).
+                <p>
+
+                <a href="https://link.springer.com/content/pdf/10.1007/s00211-022-01327-7.pdf">Sensitivity of low-rank matrix recovery</a><br>
+                with N. Vannieuwenhoven. Numerische Mathematik (2022).
+                <p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>Computational Algebraic Geometry</h3>
+
+                <a href="https://arxiv.org/abs/2409.09622">Computing Arrangements of Hypersurfaces</a><br>
+                with B. Sturmfels and K. Wang. Journal of Software and Algebra (to appear).
+                <p>
+
+                <a href="https://arxiv.org/abs/2302.14697">A short proof for the parameter continuation theorem</a><br>
+                with V. Borovik. Journal of Symbolic Computation (2025).
+                <p>
+
+                <a href="https://arxiv.org/abs/2306.07897">Khovanskii bases for semimixed systems of polynomial equations - a case of approximating stationary nonlinear Newtonian dynamics</a><br>
+                with V: Borovik, J. del Pino, M. Michalek, and O. Zilberberg. Journal de Mathématiques Pures et Appliquées (2023).
+                <p>
+
+                <a href="https://arxiv.org/abs/2208.08179">The algebraic degree of coupled oscillators</a><br>
+                with L. Monin, M. Michalek, and S. Telen. arXiv:2208.08179.
+                <p>
+
+                <a href="https://arxiv.org/abs/2011.05000">Certifying zeros of polynomial systems using interval arithmetic</a><br>
+                with K. Rose and S. Timme. Trans. Math. Software (2023).
+                <p>
+
+                <a href="https://arxiv.org/abs/2211.06876">Real circles tangent to 3 conics</a><br>
+                with J. Lindberg, G. Ong, and L. Sommer. Le Matematiche (2023).
+                <p>
+
+                <a href="https://arxiv.org/abs/2012.06350">Euclidean distance degree and mixed volume</a><br>
+                with F. Sottile and J. Woodcock. J. Found. Comp. Math. (2021).
+                <p>
+
+                <a href="https://arxiv.org/abs/2110.06608">Equations for GL invariant families of polynomials</a><br>
+                with C. Ikenmeyer, R. Hodges, and M. Michalek. Vietnam Journal of Mathematics (2022).
+                <p>
+            </td>
+            <td>
+                <h3>Metric geometry</h3>
+
+                <a href="http://arxiv.org/abs/2502.08256">Probabilistic intersection theory in Riemannian homogeneous spaces</a><br>
+                with P. Bürgisser, A. Lerario, and L. Mathis. arXiv:2502.08256.
+                <p>
+
+                <a href="https://arxiv.org/abs/2402.12217">Degree of the Subspace Variety</a><br>
+                with P. Santarsiero. Collectanea Mathematica (to appear).
+                <p>
+
+                <a href="https://arxiv.org/abs/2307.04224">Reach of Segre-Veronese Manifolds</a><br>
+                with S. Eggleston. Acta Univ. Sapientiae Math (2025).
+                <p>
+
+                <a href="http://arxiv.org/abs/2206.09130">Critical Curvature of Algebraic Surfaces in Three-Space</a><br>
+                with K. Ranestad and M. Weinstein. Acta Univ. Sapientiae Math (2025).
+                <p>
+
+                <a href="https://arxiv.org/abs/2112.08437">Facet volumes of polytopes</a><br>
+                with P. Blagojevic and A. Heaton. arXiv:2112.08437.
+                <p>
+
+                <a href="https://arxiv.org/abs/2109.14996">The zonoid algebra, generalized mixed volumes, and random determinants</a><br>
+                with P. Bürgisser, A. Lerario, and L. Mathis. Adv. in Math. (2022).
+                <p>
+
+                <a href="https://arxiv.org/abs/1807.04530">On the geometry of the set of symmetric matrices with repeated eigenvalues</a><br>
+                with K. Kozhasov and A. Lerario. Arnold Mathematical Journal 1 (4) (2019), 423-443.
+                <p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>Random polynomials</h3>
+
+                <a href="https://arxiv.org/abs/2407.08371">Typical ranks of random order-three tensors</a><br>
+                with S. Eggleston and A. Rosana. International Mathematical Research Notices (2025).
+                <p>
+
+                <a href="https://arxiv.org/abs/2212.01596">Average degree of the essential variety</a><br>
+                with S. Fairchild, P. Santarsiero, and E. Shehu. La Matematica (2024).
+                <p>
+
+                <a href="https://arxiv.org/abs/1909.11052">Quantitative singularity theory for random polynomials</a><br>
+                with H. Keneshlou and A. Lerario. IMRN (2020).
+                <p>
+
+                <a href="http://arxiv.org/abs/1711.08253">Random Spectrahedra</a><br>
+                with K. Kozhasov and A. Lerario. SIAM J. Optim. 29 (4) (2019), 2608-2624.
+                <p>
+
+                <a href="https://arxiv.org/abs/1701.07312">How Many Eigenvalues of a Random Symmetric Tensor are Real?</a><br>
+                Trans. Amer. Math. Soc. 372 (2019), 7857-7887.
+                <p>
+
+                <a href="http://epubs.siam.org/doi/abs/10.1137/16M1089769">The expected number of eigenvalues of a real Gaussian tensor</a><br>
+                SIAM J. Appl. Algebra and Geometry 1(1) (2017), 254–271.
+                <p>
+
+                <a href="http://www.sciencedirect.com/science/article/pii/S0024379516001221">Distribution of the eigenvalues of a random system of homogeneous polynomials</a><br>
+                with P. Bürgisser. Linear Algebra and its Applications 497 (2016), 88-107.
+                <p>
+            </td>
+            <td rowspan="4">
+                <h3>Numerical analysis of tensor decompositions</h3>
+
+                <a href="https://arxiv.org/abs/2110.04172">Three decompositions of symmetric tensors have similar condition numbers</a><br>
+                with N. Dewaele and N. Vannieuwenhoven. Linear Algebra and its Applications (2023).
+                <p>
+
+                <a href="https://arxiv.org/abs/2106.13034">The condition number of many tensor decompositions is invariant under Tucker compression</a><br>
+                with N. Dewaele and N. Vannieuwenhoven. Numerical Algorithms (2023).
+                <p>
+
+                <a href="http://arxiv.org/abs/1903.05527">The average condition number of most tensor rank decomposition problems is infinite</a><br>
+                with C. Beltran and N. Vannieuwenhoven. J. Found. Comp. Math. (2022).
+                <p>
+
+                <a href="https://arxiv.org/abs/1807.04159">Pencil-based algorithms for tensor rank decomposition are not stable</a><br>
+                with C. Beltran and N. Vannieuwenhoven. SIAM J. Matrix Anal. and Appl. 40 (2) (2019), 739-773.
+
+                <br>
+                <br>
+                <iframe height="200" src="https://www.youtube.com/embed/ACkXvk-LDXY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>
+
+                <a href="https://arxiv.org/abs/1801.01673">On the average condition number of tensor rank decompositions</a><br>
+                with N. Vannieuwenhoven. IMA J. Num. Anal. (2019).
+                <p>
+
+                <a href="http://epubs.siam.org/doi/abs/10.1137/17M1142880">The condition number of join decompositions</a><br>
+                with N. Vannieuwenhoven. SIAM J. Matrix Anal. and Appl. 39(1) (2018), 287–309.
+
+                <p>
+
+                <a href="http://arxiv.org/abs/1512.03284">An efficient randomized homotopy method to approximate eigenpairs of tensors</a><br>
+                arXiv1512.03284.
+                <p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>Riemannian optimization</h3>
+
+                <a href="https://arxiv.org/abs/1909.12186">The condition number of Riemannian approximation problems</a><br>
+                with N. Vannieuwenhoven. SIAM J. Optim. 31(1) (2021), 1049-1077.
+                <p>
+
+                <a href="https://arxiv.org/abs/1709.00033">A Riemannian trust region method for the canonical tensor rank approximation problem</a><br>
+                with N. Vannieuwenhoven. SIAM J. Optim. 28(3) (2018), 2435-2465.
+                <p>
+
+                <a href="https://arxiv.org/abs/1708.02488">Convergence analysis of RGN methods and its connection with the geometric condition number</a><br>
+                with N. Vannieuwenhoven. Appl. Math. Letters 78 (2018), 42-50.
+                <p>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3>Metric Algebraic Geometry</h3>
+
+    Here is a <a href="https://link.springer.com/book/10.1007/978-3-031-51462-3">link</a> to my book project <a href="https://kathlenkohn.github.io/Papers/MFO_Seminar_MAG.pdf">Metric Algebraic Geometry</a> with <a href="https://kathlenkohn.github.io">Kathlen Kohn</a> and <a href="https://math.berkeley.edu/~bernd/">Bernd Sturmfels</a>.
     <p>
 
-    <a href="https://arxiv.org/abs/2302.08585">Numerical Nonlinear Algebra</a><br>
-    with D. Bates, T. Chen, J. Hauenstein, A. Leykin and F. Sottile. arXiv:2302.08585.
+    <h3>Mathematical Methods in Data Science</h3>
 
+    Here is a <a href="MathData.pdf">link</a> to my undergraduate book project <a href="MathData.pdf">Mathematical Methods in Data Science</a> with Samantha Fairchild.
     <p>
 
-    <a href="https://www.ams.org/journals/notices/202001/rnoti-p30.pdf">3264 Conics in a Second</a><br>
-    with B. Sturmfels and S. Timme. Not. Amer. Math. Soc. 67 (2020), 30-37.
-    <br>
-    <br>
-    <iframe height="200" src="https://www.youtube.com/embed/TZ4_B7qzq7w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <hr>
 
-    <p>
-</td>
-<td>
+    <h3>Theses</h3>
 
-    <h3>Mathematics of Data</h3>
-
-    <a href="https://arxiv.org/abs/2203.01694">Line Multiview Varieties</a><br>
-    with F. Rydell, E. Shehu and A. Torres. SIAM J. Appl. Algebra Geometry (2023).
-
+    <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj14fLhv-T7AhWyiv0HHcDhANsQFnoECBEQAQ&url=https%3A%2F%2Fwww.depositonce.tu-berlin.de%2Fbitstream%2F11303%2F6710%2F4%2Fbreiding_paul.pdf&usg=AOvVaw3Bjaj3hXOn8JIUOV_3EP9e">Numerical and Statistical Aspects of Tensor Decompositions</a><br>
+    PhD thesis, TU Berlin, 2017.<br>
+    First supervisor: <a href="https://www.math.tu-berlin.de/fachgebiete_ag_diskalg/fachgebiet_algebra_zahlentheorie/v_menue/people/prof_dr_peter_buergisser/">P. Bürgisser</a>. Second supervisor: <a href="https://www6.cityu.edu.hk/ma/people/profile/cuckerf.htm">F. Cucker</a>.
     <p>
 
-    <a href="https://arxiv.org/abs/2303.02066">Line Multiview Ideals</a><br>
-    with T. Duff, L. Gustafsson, F. Rydell and E. Shehu. Communications in
-    Algebra (2024).
-
+    <a href="ma_breiding.pdf">On a p-adic Newton method</a>.<br>
+    Master's, Georg-August Universität Göttingen, 2013.<br>
+    First supervisor: <a href="http://www.uni-math.gwdg.de/preda/">P. Mihailescu</a>. Second supervisor: <a href="https://www.math.tu-berlin.de/fachgebiete_ag_diskalg/fachgebiet_algebra_zahlentheorie/v_menue/people/prof_dr_peter_buergisser/">P. Bürgisser</a>.
     <p>
 
-
-    <a href="https://link.springer.com/article/10.1007/s13163-018-0273-6">Learning Algebraic Varieties from Samples</a><br>
-    with B. Sturmfels, S. Kališnik Verovšek and M. Weinstein. Rev. Mat. Compl. 31 (2018), 545-593.
-
-    <p>
-
-    <a href="https://arxiv.org/abs/1810.06271">Random points on an algebraic manifold</a><br>
-    with O. Marigliano. SIAM J. Mathematics of Data Science 2(2) (2020), 683-704.
-
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2108.13208">Algebraic Compressed Sensing</a><br> with F. Gesmundo, M. Michalek and N. Vannieuwenhoven. Applied and Computational Harmonic Analysis (2023).
-
-    <p>
-
-
-    <a href="https://link.springer.com/content/pdf/10.1007/s00211-022-01327-7.pdf">Sensitivity of low-rank matrix recovery</a><br> with N. Vannieuwenhoven. Numerische Mathematik (2022).
-    
-    <p>
-
-    </td>
-</tr>
-<tr>
-<td>
-    <h3>Computational Algebraic Geometry</h3>
-
-    <a href="https://arxiv.org/abs/2409.09622">Computing Arrangements of Hypersurfaces</a><br>
-    with B. Sturmfels and K. Wang. Journal of Software and Algebra (to appear).
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2302.14697">A short proof for the parameter continuation theorem</a><br>
-    with V. Borovik. Journal of Symbolic Computation (2025).
-
-    <p>
-
-      
-    <a href="https://arxiv.org/abs/2306.07897">Khovanskii bases for semimixed systems of polynomial equations - a case of approximating stationary nonlinear Newtonian dynamics</a><br>
-    with V: Borovik, J. del Pino, M. Michalek and O. Zilberberg. Journal de Mathématiques Pures et Appliquées (2023).
-
-    <p>
-    
-
-    <a href="https://arxiv.org/abs/2208.08179">The algebraic degree of coupled oscillators</a><br>
-    with L. Monin, M. Michalek and S. Telen. arXiv:2208.08179.
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2011.05000">Certifying zeros of polynomial systems using interval arithmetic</a><br>
-        with K. Rose and S. Timme. Trans. Math. Software (2023).
-
-    <p>
-
-      
-    <a href="https://arxiv.org/abs/2211.06876">Real circles tangent to 3 conics</a><br>
-    with J. Lindberg, G. Ong and L. Sommer. Le Matematiche (2023).
-
-    <p>
-
-
-    <a href="https://arxiv.org/abs/2012.06350">Euclidean distance degree and mixed volume</a><br>
-        with F. Sottile and J. Woodcock. J. Found. Comp. Math. (2021).
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2110.06608">Equations for GL invariant families of polynomials</a><br>
-    with C. Ikenmeyer, R. Hodges and M. Michalek. Vietnam Journal of Mathematics (2022).
-
-
-    <p>
-</td>
-<td>
-    <h3>Metric geometry</h3>
-
-    <a href="http://arxiv.org/abs/2502.08256">Probabilistic intersection theory in Riemannian homogeneous spaces</a><br> with P. Bürgisser, A. Lerario and L. Mathis. arXiv:2502.08256.
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2402.12217">Degree of the Subspace Variety</a><br> with P. Santarsiero. Collectanea Mathematica (to appear).
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2307.04224">Reach of Segre-Veronese Manifolds</a><br> with S. Eggleston. Acta Univ. Sapientiae Math (2025).
-
-    <p>
-
-    <a href="http://arxiv.org/abs/2206.09130">Critical Curvature of Algebraic Surfaces in Three-Space</a><br> with K. Ranestad and M. Weinstein. Acta Univ. Sapientiae Math (2025).
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2112.08437">Facet volumes of polytopes</a><br>
-    with  P. Blagojevic and A. Heaton. arXiv:2112.08437.
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2109.14996">The zonoid algebra, generalized mixed volumes, and random determinants</a><br>
-    with  P. Bürgisser, A. Lerario and L. Mathis. Adv. in Math. (2022).
-
-    <p>
-
-
-    <a href="https://arxiv.org/abs/1807.04530">On the geometry of the set of symmetric matrices with repeated eigenvalues</a><br>
-    with  K. Kozhasov and A. Lerario. Arnold Mathematical Journal 1 (4) (2019), 423-443.
-
-    <p>
-</td>
-</tr>
-<tr>
-<td>
-    <h3>Random polynomials</h3>
-
-    <a href="https://arxiv.org/abs/2407.08371">Typical ranks of random order-three tensors</a><br>
-    with S. Eggleston and A. Rosana. International
-    Mathematical Research Notices (2025).
-
-    <p>
-
-    <a href="https://arxiv.org/abs/2212.01596">Average degree of the essential variety</a><br>
-    with S. Fairchild, P. Santarsiero and E. Shehu. La
-    Matematica (2024).
-
-    <p>
-
-    <a href="https://arxiv.org/abs/1909.11052">Quantitative singularity theory for random polynomials</a><br>
-    with H. Keneshlou and A. Lerario. IMRN (2020).
-
-    <p>
-
-    <a href="http://arxiv.org/abs/1711.08253">Random Spectrahedra</a><br>
-    with K. Kozhasov and A. Lerario. SIAM J. Optim. 29 (4) (2019), 2608-2624.
-
-    <p>
-
-    <a href="https://arxiv.org/abs/1701.07312"> How Many Eigenvalues of a Random Symmetric Tensor are Real?</a><br>
-        Trans. Amer. Math. Soc. 372 (2019), 7857-7887.
-
-    <p>
-
-    <a href="http://epubs.siam.org/doi/abs/10.1137/16M1089769"> The expected number of eigenvalues of a real gaussian tensor</a><br> SIAM J. Appl. Algebra and Geometry 1(1) (2017), 254–271.
-
-    <p>
-
-    <a href="http://www.sciencedirect.com/science/article/pii/S0024379516001221"> Distribution of the eigenvalues of a random system of homogeneous polynomials</a><br> with P. Bürgisser. Linear Algebra and its Applications 497 (2016), 88-107 .
-
-    <p>
-</td>
-<td rowspan="4">
-
-        <h3>Numerical analysis of tensor decompositions</h3>
-
-        <a href="https://arxiv.org/abs/2110.04172">Three decompositions of symmetric tensors have similar condition numbers</a><br> with N. Dewaele and N. Vannieuwenhoven. Linear Algebra and its Applications (2023).
-
-        <p>
-
-        <a href="https://arxiv.org/abs/2106.13034">The condition number of many tensor decompositions is invariant under Tucker compression</a><br> with N. Dewaele and N. Vannieuwenhoven. Numerical Algorithms (2023).
-
-        <p>
-
-        <a href="http://arxiv.org/abs/1903.05527">The average condition number of most tensor rank decomposition problems is infinite</a><br> with C. Beltran and N. Vannieuwenhoven. J. Found. Comp. Math. (2022).
-
-
-        <p>
-
-
-        <a href="https://arxiv.org/abs/1807.04159">Pencil-based algorithms for tensor rank decomposition are not stable</a><br> with C. Beltran and N. Vannieuwenhoven. SIAM J. Matrix Anal. and Appl. 40 (2) (2019), 739-773.
-
-        <br>
-        <br>
-        <iframe height="200" src="https://www.youtube.com/embed/ACkXvk-LDXY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-        <p>
-
-        <a href="https://arxiv.org/abs/1801.01673">On the average condition number of tensor rank decompositions</a><br> with N. Vannieuwenhoven. IMA J. Num. Anal. (2019).
-
-        <p>
-
-        <a href="http://epubs.siam.org/doi/abs/10.1137/17M1142880"> The condition number of join decompositions</a><br> with N. Vannieuwenhoven. SIAM J. Matrix Anal. and Appl. 39(1) (2018), 287–309.
-
-        <p>
-
-        <a href="http://arxiv.org/abs/1512.03284"> An efficient randomized homotopy method to approximate eigenpairs of tensors</a><br> arXiv1512.03284.
-
-
-        <p>
-
-</td>
-</tr>
-<tr>
-<td>
-    <h3>Riemannian optimization</h3>
-
-    <a href="https://arxiv.org/abs/1909.12186">The condition number of Riemannian approximation problems</a><br>
-    with N. Vannieuwenhoven. SIAM J. Optim. 31(1) (2021), 1049-1077.
-
-    <p>
-
-    <a href="https://arxiv.org/abs/1709.00033">A Riemannian trust region method for the canonical tensor rank approximation problem</a><br>
-    with N. Vannieuwenhoven. SIAM J. Optim. 28(3) (2018), 2435-2465.
-
-    <p>
-
-    <a href="https://arxiv.org/abs/1708.02488"> Convergence analysis of RGN methods and its connection with the geometric condition number</a><br>
-        with N. Vannieuwenhoven. Appl. Math. Letters 78 (2018), 42-50.
-
-    <p>
-
-</td>
-</tr>
-</table>
-
-<hr>
-
-<h3>Metric Algebraic Geometry</h3>
-
-Here is a <a href="https://link.springer.com/book/10.1007/978-3-031-51462-3">link</a> to my book project <a href="https://kathlenkohn.github.io/Papers/MFO_Seminar_MAG.pdf">Metric Algebraic Geometry</a> with <a href="https://kathlenkohn.github.io">Kathlen Kohn</a> and <a href="https://math.berkeley.edu/~bernd/">Bernd Sturmfels</a>.
-<p>
-
-
-<h3>Mathematical Methods in Data Science</h3>
-
-Here is a <a href="MathData.pdf">link</a> to my undergraduate book project <a href="MathData.pdf">Mathematical Methods in Data Science</a> with Samantha Fairchild.
-<p>
-
-<p>
-
-<hr>
-
-<h3>Theses</h3>
-
-
-<a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj14fLhv-T7AhWyiv0HHcDhANsQFnoECBEQAQ&url=https%3A%2F%2Fwww.depositonce.tu-berlin.de%2Fbitstream%2F11303%2F6710%2F4%2Fbreiding_paul.pdf&usg=AOvVaw3Bjaj3hXOn8JIUOV_3EP9e">Numerical and Statistical Aspects of Tensor Decompositions</a><br>
-PhD thesis, TU Berlin, 2017.<br>
-First supervisor: <a href="https://www.math.tu-berlin.de/fachgebiete_ag_diskalg/fachgebiet_algebra_zahlentheorie/v_menue/people/prof_dr_peter_buergisser/">P. Bürgisser</a>. Second supervisor: <a href="https://www6.cityu.edu.hk/ma/people/profile/cuckerf.htm">F. Cucker</a>.
-<p>
-
-<a href=ma_breiding.pdf>On a p-adic Newton method</a>.<br>
-Master's, Georg-August Universität Göttingen, 2013.<br>
-First supervisor: <a href="http://www.uni-math.gwdg.de/preda/">P. Mihailescu</a>.  Second supervisor: <a href="https://www.math.tu-berlin.de/fachgebiete_ag_diskalg/fachgebiet_algebra_zahlentheorie/v_menue/people/prof_dr_peter_buergisser/">P. Bürgisser</a>.
-
-<p>
-<hr>
+    <hr>
 </div>
 
 <footer>
