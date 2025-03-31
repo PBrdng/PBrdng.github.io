@@ -16,43 +16,40 @@
             padding: 0;
             background-color: #ECF0F1; /* Off-White / Light Gray */
         }
-
         header {
             background: #333; /* Dark Header */
             color: #fff;
-            padding: 20px 0;
+            padding: 10px 0; /* Reduced padding */
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center items */
         }
-
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
-            overflow: hidden;
-            text-align: center;
+            display: flex; /* Flexbox for horizontal layout */
+            justify-content: center; /* Center the items */
         }
-
         nav ul li {
             display: inline;
         }
-
         nav ul li a {
             position: relative;
             display: inline-block;
             color: white; /* White Text for Links */
             text-align: center;
-            padding: 15px 20px;
+            padding: 10px 15px; /* Keep padding moderate */
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 16px; /* Adjust font size for header links */
         }
-
         nav ul li a:hover {
             color: #E74C3C; /* Coral Red on Hover */
         }
-
         .container {
             margin-top: 80px; /* Space for fixed header */
             padding: 20px;
@@ -64,57 +61,46 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
-
         h2 {
             font-size: 32px;
             margin: 10px 0;
             color: #0076A8; /* Darker Cool Blue */
         }
-
         h3 {
             font-size: 24px;
             margin-top: 20px;
             color: #0076A8; /* Darker Cool Blue */
         }
-
         p {
             margin: 10px 0;
         }
-
         .imgR, .imgL {
             border-radius: 8px;
             margin-bottom: 20px;
             max-width: 100%; /* Make sure images are responsive */
             height: auto; /* Maintain aspect ratio */
         }
-
         .imgR {
             float: right;
             padding-top: 20px; /* Optional: extra space from top */
         }
-
         .imgL {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            float: left;
+            padding-top: 20px; /* Optional: extra space from top */
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-
         th, td {
             text-align: left;
             padding: 20px;
             border: 1px solid rgba(62, 97, 120, 0.1);
         }
-
         tr:nth-child(odd) {
             background-color: rgba(62, 97, 120, 0.06); /* Row Striping */
         }
-
         footer {
             text-align: center;
             padding: 20px;
@@ -122,12 +108,10 @@
             color: #fff; /* White Text */
             margin-top: 20px;
         }
-
         .social-icons {
             text-align: center;
             margin: 20px 0;
         }
-
         .social-icons a {
             margin: 0 15px; 
             color: #0076A8; /* Darker Cool Blue */
@@ -135,11 +119,9 @@
             padding: 10px; /* Larger clickable area */
             transition: color 0.3s ease;
         }
-
         .social-icons a:hover {
             color: #E74C3C; /* Coral Red on Icon Hover */
         }
-
         a {
             position: relative;
             color: #34495E; /* Dark Slate Gray for text links */
@@ -147,22 +129,25 @@
             text-decoration: none; /* Remove default underline */
             transition: color 0.3s ease; /* Smooth color transition */
         }
-
         a:hover {
             color: #E74C3C; /* Coral Red on Hover */
             text-decoration: underline; /* Underline effect on hover */
         }
-
         .logo-link {
             display: inline-block;
             padding: 5px; /* Add slight padding around logo link */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Transition for smooth effect */
         }
-
+        .logo-link img {
+            vertical-align: middle; /* Align logo vertically */
+        }
         .logo-link:hover {
             background-color: rgba(62, 97, 120, 0.1); /* Background highlight on hover */
             border-radius: 4px; /* Smooth rounded corners */
+            text-decoration: underline; /* Underline effect on hover */
+            color: #E74C3C; /* Change text color on hover (optional) */
         }
-
+        
         /* Video styles */
         .video-container {
             display: flex;
@@ -175,7 +160,7 @@
             max-width: 300px; /* Limit maximum width */
             height: auto; /* Maintain aspect ratio */
         }
-        
+
         /* Responsive Design */
         @media only screen and (max-width: 600px) {
             h2 {
@@ -185,7 +170,11 @@
                 font-size: 20px; /* Smaller h3 for mobile */
             }
             nav ul li {
-                display: block; /* Stack navigation items */
+                /* Maintain horizontal display on mobile */
+                display: inline-block; /* Keep inline-block for horizontal flow */
+            }
+            nav ul li a {
+                font-size: 14px; /* Smaller font size for header links on mobile */
             }
             .imgR, .imgL {
                 max-width: 90%; /* Allow images to be smaller on mobile */
@@ -206,6 +195,7 @@
         }
     </style>
 </head>
+
 
 <body>
 

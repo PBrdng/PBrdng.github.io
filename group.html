@@ -20,18 +20,20 @@
         header {
             background: #333; /* Dark Header */
             color: #fff;
-            padding: 20px 0;
+            padding: 10px 0; /* Reduced padding */
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center items */
         }
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
-            overflow: hidden;
-            text-align: center;
+            display: flex; /* Flexbox for horizontal layout */
+            justify-content: center; /* Center the items */
         }
         nav ul li {
             display: inline;
@@ -41,9 +43,10 @@
             display: inline-block;
             color: white; /* White Text for Links */
             text-align: center;
-            padding: 15px 20px;
+            padding: 10px 15px; /* Keep padding moderate */
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 16px; /* Adjust font size for header links */
         }
         nav ul li a:hover {
             color: #E74C3C; /* Coral Red on Hover */
@@ -83,9 +86,8 @@
             padding-top: 20px; /* Optional: extra space from top */
         }
         .imgL {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            float: left;
+            padding-top: 20px; /* Optional: extra space from top */
         }
         table {
             width: 100%;
@@ -135,10 +137,16 @@
         .logo-link {
             display: inline-block;
             padding: 5px; /* Add slight padding around logo link */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Transition for smooth effect */
+        }
+        .logo-link img {
+            vertical-align: middle; /* Align logo vertically */
         }
         .logo-link:hover {
             background-color: rgba(62, 97, 120, 0.1); /* Background highlight on hover */
             border-radius: 4px; /* Smooth rounded corners */
+            text-decoration: underline; /* Underline effect on hover */
+            color: #E74C3C; /* Change text color on hover (optional) */
         }
         
         /* Responsive Design */
@@ -150,7 +158,11 @@
                 font-size: 20px; /* Smaller h3 for mobile */
             }
             nav ul li {
-                display: block; /* Stack navigation items */
+                /* Maintain horizontal display on mobile */
+                display: inline-block; /* Keep inline-block for horizontal flow */
+            }
+            nav ul li a {
+                font-size: 14px; /* Smaller font size for header links on mobile */
             }
             .imgR, .imgL {
                 max-width: 90%; /* Allow images to be smaller on mobile */
