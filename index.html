@@ -1,226 +1,247 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Paul Breiding</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<script type ="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
-<link href="https://unpkg.com/normalize.css@8.0.0/normalize.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Breiding</title>
+    <link href="https://unpkg.com/normalize.css@8.0.0/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             font-size: 20px;
             font-family: 'Roboto', sans-serif;
-            line-height:130%;
-            color: #020202;
-            font-weight: 400;
-            margin: 55px 0px 5px 5px;
-            padding: 0px;
-        }
-         a {
-            color: rgba(62, 97, 120, 0.9);
-            font-weight: 600;
-            text-decoration: none;
-        }
-        hr {
-            color: rgba(62, 97, 120, 0.2);
-            background-color: rgba(62, 97, 120,0.1);
-            height:1.25px;
-            margin: 30px 10px 30px 0px;
-        }
-        h2 {
-            font-size: 40px;
-        }
-        ul {
-            list-style-type: none;
+            line-height: 1.5;
+            color: #34495E; /* Dark Slate Gray */
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            background-color: #333;
+            background-color: #ECF0F1; /* Off-White / Light Gray */
+        }
+        header {
+            background: #333; /* Dark Header */
+            color: #fff;
+            padding: 20px 0;
             position: fixed;
             top: 0;
             width: 100%;
-          }
-
-        li {
-            float: left;
-          }
-
-        li a {
-            display: block;
-            color: white;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
             text-align: center;
-            padding: 20px 18px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            position: relative;
+            display: inline-block;
+            color: white; /* White Text for Links */
+            text-align: center;
+            padding: 15px 20px;
             text-decoration: none;
-          }
-
-        li a:hover:not(.active) {
-            background-color: rgba(62, 97, 120, 0.9);
-          }
-
-        .active {
-            background-color: rgba(62, 97, 120, 0.9);
-          }
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-            }
-
-        .imgR {
-              float: right;
-              border-radius: 4%;
-            }
-        .imgL {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-              border-radius: 4%;
-            }
-        .row {
-                display: flex;
+            transition: color 0.3s ease;
         }
-        .column {
-             float: left;
+        nav ul li a:hover {
+            color: #E74C3C; /* Coral Red on Hover */
         }
-        .left {
-          width: 50%;
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(62, 97, 120, 0.9); 
+            left: 0;
+            bottom: -5px; /* Space between link and underline */
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
-        .right {
-          width: 50%;
-          padding: 20px;
+        nav ul li a:hover::after {
+            transform: scaleX(1); /* Animate underline on hover */
         }
-        table {
-          width: 100%;
-          font-size: 20px;
-          font-family: 'Roboto', sans-serif;
-          line-height:130%;
-          color: #020202;
-          font-weight: 400;
-          border: solid 0.1px rgba(62, 97, 120, 0.2);
-        }
-        table.center {
+        .container {
+            margin-top: 80px; /* Space for fixed header */
+            padding: 20px;
+            max-width: 1250px;
             margin-left: auto;
             margin-right: auto;
-          }
-        td, th {
-          text-align: left;
-          padding: 40px 40px 40px 40px;
+            background: #fff; /* White Background for Content */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
-
+        h2 {
+            font-size: 32px;
+            margin: 10px 0;
+            color: #0076A8; /* Darker Cool Blue */
+        }
+        h3 {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #0076A8; /* Darker Cool Blue */
+        }
+        p {
+            margin: 10px 0;
+        }
+        .imgR, .imgL {
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .imgR {
+            float: right;
+            max-width: 100%;
+            padding-top: 20px; /* Optional: extra space from top */
+        }
+        .imgL {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: left;
+            padding: 20px;
+            border: 1px solid rgba(62, 97, 120, 0.1);
+        }
         tr:nth-child(odd) {
-          background-color: rgba(62, 97, 120, 0.06);
+            background-color: rgba(62, 97, 120, 0.06); /* Row Striping */
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333; /* Dark Footer */
+            color: #fff; /* White Text */
+            margin-top: 20px;
+        }
+        .social-icons {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .social-icons a {
+            margin: 0 15px; 
+            color: #0076A8; /* Darker Cool Blue */
+            font-size: 36px; /* Increased size for icons */
+            padding: 10px; /* Larger clickable area */
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #E74C3C; /* Coral Red on Icon Hover */
+        }
+        /* Updated Link Styles */
+        a {
+            position: relative;
+            color: #34495E; /* Dark Slate Gray for text links */
+            font-weight: 600;
+            text-decoration: none; /* Remove default underline */
+            transition: color 0.3s ease; /* Smooth color transition */
+        }
+        a:hover {
+            color: #E74C3C; /* Coral Red on Hover */
+            text-decoration: underline; /* Underline effect on hover */
+        }
+        /* New style for the logo link */
+        .logo-link {
+            display: inline-block;
+            padding: 5px; /* Add slight padding around logo link */
+        }
+        .logo-link:hover {
+            background-color: rgba(62, 97, 120, 0.1); /* Background highlight on hover */
+            border-radius: 4px; /* Smooth rounded corners */
         }
     </style>
 </head>
 
 <body>
 
-<div id = "mystyle" style="margin:5; padding:0">
+<header>
+    <nav>
+        <ul>
+            <li><a href="group.html">Group</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li>
+                <a href="https://www.juliahomotopycontinuation.org" class="logo-link">
+                    <img src="logo_white_transparent_bg.png" height="25" alt="Logo">
+                </a>
+            </li>
+            <li><a href="cv.pdf">Curriculum Vitae</a></li>
+            <li><a href="teaching.html">Lecture Notes</a></li>
+        </ul>
+    </nav>
+</header>
 
-  <ul>
-    <li><a href = "group.html">Group</a></li>
-    <li><a href = "research.html">Research</a></li>
-    <li> <a href = "https://www.juliahomotopycontinuation.org"><img src=logo_white_transparent_bg.png height="25" ALT="" hspace="0" vspace="0"></a></li>
-    <li> <a href="cv.pdf">Curriculum Vitae</a></li>
-    <li> <a href="teaching.html">Lecture Notes</a></li>
-  </ul>
+<div class="container">
 
+    <img class="imgR" src="img.jpeg" width="325" alt="Paul Breiding">
+
+    <h3>Paul Breiding</h3>
+    <p>Universität Osnabrück<br>
+    FB 6 Mathematik/Informatik/Physik<br>
+    Albrechtstr. 28a<br>
+    D-49076 Osnabrück</p>
+
+    <p>Email: <a href="mailto:pbreiding@uni-osnabrueck.de">pbreiding@uni-osnabrueck.de</a></p>
+
+    <div class="social-icons">
+        <a href="https://github.com/PBrdng" class="fa fa-github"></a>
+        <a href="https://scholar.google.com/citations?user=uh9t9a8AAAAJ&hl=en" class="fa fa-google"></a>
+        <a href="https://www.youtube.com/channel/UCuz9__tlIMsD1zzRA2pr9xg" class="fa fa-youtube"></a>
+        <a href="https://www.linkedin.com/in/paul-breiding-062055331/" class="fa fa-linkedin"></a>
+    </div>
+
+    <img class="imgR" src="logo_emmy_noether_gross.jpg" width="250" alt="Logo">
+
+    <h3>About Me</h3>
+    <p>Professor for Mathematical Methods in Data Science at the 
+    <a href="https://www.uni-osnabrueck.de/startseite/">University of Osnabrück</a>.  
+    I am part of the working group 
+    <a href="https://www.mathematik.uni-osnabrueck.de/forschung/ag_angewandte_algebra_und_datenanalyse.html">Applied Algebra and Data Analysis</a> and the 
+    <a href="https://www.ds.uni-osnabrueck.de/forschungsstelle_data_science.html">Research Unit Data Science</a>.
+    Fellow of the 
+    <a href="http://www.adwmainz.de/qualifizierung/junge-akademie/beschreibung.html">Junge Akademie Mainz</a>.</p>
+
+    <p>My research is in <a href="https://en.wikipedia.org/wiki/Nonlinear_algebra">nonlinear algebra</a>.</p>
+
+    <p>(Take a look at our <a href="https://arxiv.org/abs/2103.16300">expository article</a>.)</p>
+
+    <hr>
+
+    <table>
+        <tr>
+            <td>
+                <h3>Metric Algebraic Geometry</h3>
+                <p>Our book <a href="https://link.springer.com/content/pdf/10.1007/978-3-031-51462-3.pdf">Metric Algebraic Geometry</a> is available for download.</p>
+                <p>My coauthors are <a href="https://kathlenkohn.github.io">Kathlen Kohn</a> and <a href="https://math.berkeley.edu/~bernd/">Bernd Sturmfels</a>.</p>
+            </td>
+            <td rowspan="3">
+                <video class="imgL" src="conics.mp4" height="300" autoplay loop muted playsinline></video>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>HomotopyContinuation.jl</h3>
+                <p>The current version of our software HomotopyContinuation.jl is v.2.11:</p>
+                <p><a href="https://www.juliahomotopycontinuation.org">juliahomotopycontinuation.org</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>Pencil-based algorithms are not stable</h3>
+                <p><a href="http://personales.unican.es/beltranc/">Carlos Beltran</a> co-produced this video about one of our papers.</p>
+                <iframe width="400" height="250" src="https://www.youtube.com/embed/ACkXvk-LDXY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+        </tr>
+    </table>
 </div>
 
-<div id = "mystyle" style="margin:5; padding:20">
-<img class = "imgR" src=img.jpeg width="325" ALT="" hspace="50" vspace="20">
+<footer>
+    <p>&copy; 2025 Paul Breiding. All rights reserved.</p>
+</footer>
 
-
-<h3>Paul Breiding</h3>
-Universität Osnabrück<br>
-FB 6 Mathematik/Informatik/Physik<br>
-Albrechtstr. 28a<br>
-D-49076 Osnabrück
-<br>
-
-<br>
-pbreiding@uni-osnabrueck.de
-<br>
-<h2>
-
-
-
-
-&nbsp;
-<a href="https://github.com/PBrdng" class="fa fa-github"></a>
-&nbsp;
-<a href="https://scholar.google.com/citations?user=uh9t9a8AAAAJ&hl=en" class="fa fa-google"></a>
-&nbsp;
-<a href="https://www.youtube.com/channel/UCuz9__tlIMsD1zzRA2pr9xg" class="fa fa-youtube"></a>
-&nbsp;
-<a href="https://www.linkedin.com/in/paul-breiding-062055331/" class="fa fa-linkedin"></a>
-
-
-</h2>
-<img class = "imgR" src=logo_emmy_noether_gross.jpg width="250" ALT="" hspace="50" vspace="20">
-<h3>About me</h3>
-Professor for Mathematical Methods in Data Science at the
-<a href = "https://www.uni-osnabrueck.de/startseite/">University of Osnabrück</a>.
-<br>
-I am part of the working group
-<a href = "https://www.mathematik.uni-osnabrueck.de/forschung/ag_angewandte_algebra_und_datenanalyse.html">Applied Algebra and Data Analysis</a> and the <a href = "https://www.ds.uni-osnabrueck.de/forschungsstelle_data_science.html">Research Unit Data Science</a>.
-<br>
-Fellow of the <a href="http://www.adwmainz.de/qualifizierung/junge-akademie/beschreibung.html">Junge Akademie Mainz</a>.
-<p>
-
-My research is in <a href="https://en.wikipedia.org/wiki/Nonlinear_algebra">nonlinear algebra</a>.<br>
-
-(Take a look at our
-<a href="https://arxiv.org/abs/2103.16300">expository article</a>.)
-
-<p><p><hr>
-
-<table rules = "rows">
-
-<tr>
-<td>
-<h3>Metric Algebraic Geometry</h3>
-
-Our book <a href="https://link.springer.com/content/pdf/10.1007/978-3-031-51462-3.pdf">Metric Algebraic Geometry</a> is available for download.
-
-<p>
-
-My coauthors are <a href="https://kathlenkohn.github.io">Kathlen Kohn</a> and <a href="https://math.berkeley.edu/~bernd/">Bernd Sturmfels</a>.
-
-</td>
-<td rowspan="3">
-  &nbsp;&nbsp;&nbsp;&nbsp;<video class = "imgL" src=conics.mp4 height="300" autoplay loop muted playsinline>
-</td>
-</tr>
-
-<tr>
-<td>
-<h3>HomotopyContinuation.jl</h3>
-
-The current version of our software HomotopyContinuation.jl is v.2.11:
-<p>
-<a href="https://www.juliahomotopycontinuation.org">juliahomotopycontinuation.org</a>
-
-</td>
-</tr>
-
-<tr>
-<td>
-<h3>Pencil based algorithms are not stable</h3>
-
-<a href="http://personales.unican.es/beltranc/">Carlos Beltran</a> co-produced this video about one of our papers.
-
-<br>
-<br>
-
-<iframe width="400" height="250" src="https://www.youtube.com/embed/ACkXvk-LDXY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-</td>
-</tr>
-
-</table>
-
-<div>
 </body>
 </html>
