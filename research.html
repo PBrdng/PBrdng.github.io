@@ -148,6 +148,12 @@
             text-decoration: underline; /* Underline effect on hover */
             color: #E74C3C; /* Change text color on hover (optional) */
         }
+        .video-container video {
+        max-width: 300px; 
+        height: auto; /* Maintain aspect ratio */
+        display: block;
+        margin: 0 auto;
+        }
         
         /* Responsive Design */
 @media only screen and (max-width: 600px) {
@@ -190,7 +196,10 @@
     }
     .video-container video {
         width: 90%; /* Set video width to 90% on mobile */
+        max-width: 300px; 
         height: auto; /* Maintain aspect ratio */
+        display: block;
+        margin: 0 auto;
     }
     .container {
         padding: 10px; /* Reduce padding on mobile */
