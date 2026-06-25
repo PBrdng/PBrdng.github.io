@@ -235,6 +235,39 @@ footer {
 
 /* ── Responsive ── */
 
+/* ── Tablet: stack multi-column content tables ── */
+@media only screen and (max-width: 768px) {
+    .papers-table tr,
+    .papers-table td,
+    .group-table tr,
+    .group-table td {
+        display: block;
+        width: auto !important;
+    }
+
+    .papers-table td,
+    .group-table td {
+        border: none;
+        border-bottom: 1px solid #f1f5f9;
+        padding: 20px 0;
+    }
+
+    /* remove zebra-stripe rows — they look odd when stacked */
+    .papers-table tr:nth-child(odd),
+    .group-table tr:nth-child(odd) {
+        background-color: transparent;
+    }
+
+    /* group photo: full-width, centred */
+    .group-table img {
+        float: none;
+        display: block;
+        max-width: 100%;
+        margin: 0 auto 16px;
+    }
+}
+
+/* ── Mobile ── */
 @media only screen and (max-width: 600px) {
     h1 { font-size: 26px; }
     h2 { font-size: 22px; }
@@ -245,6 +278,9 @@ footer {
         font-size: 11px;
         padding: 12px 8px;
     }
+
+    /* hide the Julia logo so 5 nav items don't overflow */
+    .logo-link { display: none; }
 
     nav ul li a.cv-link {
         font-size: 0;
@@ -268,5 +304,20 @@ footer {
 
     .social-icons a { font-size: 24px; }
 
-    iframe { width: 100%; height: auto; }
+    /* iframes: fill width, maintain 16:9 ratio */
+    iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        display: block;
+    }
+
+    /* teaching table: reduce padding so 3 columns fit */
+    .teaching-table td {
+        padding: 10px 6px;
+    }
+    .teaching-table h4,
+    .teaching-table h2 {
+        margin: 4px 0;
+    }
 }
